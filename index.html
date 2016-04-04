@@ -53,37 +53,69 @@
 										<h2>Investigating Kwadela</h2>
 										<p>Analyzing and Visualizing Thermal and Pollutant Data Over Time from the Kwadela Township in South Africa <br>
 										Pre/Post Intervention</p>
+
 									</header>
-									<p>Faucibus sed lobortis aliquam lorem blandit. Lorem eu nunc metus col. Commodo id in arcu ante lorem ipsum sed accumsan erat praesent faucibus commodo ac mi lacus. Adipiscing mi ac commodo. Vis aliquet tortor ultricies non ante erat nunc integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum.</p>
+									<p>Poor air quality from aerosol pollution is the second leading cause of premature death in the world, with the burden of this pollution falling primarily on the poor. When governments seek to improve air quality, the easiest target tends to be large point-sources of pollutants (i.e. power generation facilities, refineries, and other industrial facilities). However, this strategy is ineffective in areas such as South Africa, where the vast majority (up to 80%) of particulate matter can be apportioned to domestic burning of coal and wood in low-income areas for the purpose of heating and cooking. </p>
+									<p>To this end, a major chemical company in South Africa funded a multi-year pollution study in a small township called Kwadella during 2013-2014. This study consisted of one year (winter and summer) of air quality measurements to establish a baseline for pollution. After year 1, low-cost modifications were made to township homes to improve their thermal efficiency with the goal of reducing the quantity of fuel burned. Year 2 made the same air quality measurements to determine the impact of these intervention steps on both indoor and ambient air quality. </p>
+									<p>For our Data Science final project, we have been working in collaboration with Olin Professor Scott Hersey, who has provided us with a dataset from this pollution study that describes indoor temperature, outdoor temperature, particulate matter pollutant concentration, and gas phase pollutant concentration during the winter of 2013 and the winter of 2014 in Kwadela, South Africa.</p>
+
+									<a href="#" class="image"><img src="http://i.snag.gy/gNpe6.jpg" alt="Google Earth: Bird's eye view of Kwadella" /> </a>  <h6>Photo: Google Earth 2016</h6>
 								</div>
+
 							</section>
 
 
 						<!-- Two-->
 							<section id="two">
 								<div class="container">
-									<h3>Story 1</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
+									<h3>Story 1: Project Update 4/5</h3>
+									<p>Exploration and visualization of 2013 pre-intervention data.</p>
 									<div class="features">
 										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Possibly broke spacetime</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+											
+											<div >
+												<h4>Getting started and learning about our dataset </h4>
+												<p>We started this project by looking at ways we could work with an external collaborator and their dataset. Luckily, Olin’s professors have a breadth of data-rich research projects going on and we were able to find and work with Professor Scott Hersey and the environmental data he collected in the low-income South African township of Kwadela. Because Scott works and teaches a class on campus, we were able to meet with our collaborator to understand the context of the data and ask questions about circumstances surrounding data collection and odd points and outliers; before this project we had to make up our own context for data sets and catch probable errors based on our limited knowledge of the dataset subject field. </p>
+												<p>During our meeting with Scott, we were able to identify tangible research questions for our project, understand how the data was expected to behave based on principles of chemistry and anthropology, and select a handful of actually useful columns of data from the 50+ column long csv file Scott had originally provided us. For example, we learned that homes in Kwadela usually have very poor insulation and rely on coal burning stoves for warmth. These same coal burning stoves throw large quantities of pollutants in the air and ultimately cause lung related health concerns for the inhabitants of Kwadela. By comparing trends in outdoor temperature, indoor temperature (which indicates stove usage), and pollutant concentrations, we should be able to see how closely stove use is connected to pollution and cold weather. 
+											</p>
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Terraformed a small moon</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+											<div >
+												<h4>Challenge that was solved - Best Ways to Represent Data Over Time</h4>
+												<p>In talking with Scott, we also identified a challenge within our dataset. Scott’s data is a time course data series, meaning that it consists of a number of quantitative measurements taken over time. With time course data series, as we learned through research and our conversation with Scott, it’s not statistically accurate to take one mean temperature or pollutant concentration for  the whole winter and use only that measurement. Additionally, data visualizations over the course of the entire winter are noisy and show season-wide trends, but cannot accurately represent daily trends that reflect the average life of someone living in Kwadela.  </p>
 											</div>
 										</article>
 										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Snapped dark matter in the wild</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
+											
+											<h4>Season Wide Trends </h4>
+												<p>	Season-wide trends were initially a challenge, as the dates in our dataset did not originally have a feature that represented the time since data collection began. Plotting by ‘Day’ would actually show a three data points for that day (one data point per month). We needed to create a new column to represent the DayCount, which would show us the days that had past since July 1st, approximately when data collection began that winter. Once this was resolved, however, we were able to create visualizations to show trends over the course of the entire winter. The code we used to get a running DayCount is below. The plot below is a graph of season-wide trends in indoor temperature ( green), outdoor temperature (blue), and concentrations of particulate pollutant greater than 4 microns in diameter(red). </p>
+
+										</article>
+											<div>
+												<center><a href="#" class="image"><img src="http://i.snag.gy/8e97e.jpg" alt="" /></a> <br><a href="#" class="image"><img src="http://i.snag.gy/XSYKb.jpg" alt="" width ="110% of window" /></a><br> </center>
+											</div>
+										<article>
+											<div >
+												<h4> Diurnal Plots</h4>
+												<p>	Once we had the season-wide data visualizations, We found that diurnal plots are the best way to find the significant daily trends in the data. Right now, we’re looking at seasonal plots to understand overarching trends, then examining average days in general. Next, we want to look at averages for certain types of days (for example, days in the final, warmer third of the winter) and compare these plots. 	Here are some diurnal plots we have created.  You can see that the spikes in pollutant concentration show up in the morning, when people in the household would turn on their stoves at the beginning of the day, as well as in the early evening, when people are cooking dinner and night starts getting colder.  Comparing this to the plots of indoor temperature and outdoor temperature, we see that at the time of day that pollutants spike, and presumably the stove is being turned on, indoor temperature starts decreasing at a much slower rate than outdoor temperature, and the difference between indoor and outdoor temperatures increases.
+
+												Both these visualizations and the season-wide visualizations can be used to tell a qualitative story about our dataset.
+												</p>
+											</div>
+											<div>
+												Outdoor Temmperature
+												<img src="http://i.snag.gy/jF7SI.jpg" alt="" width="80% of window"/><br>
+												Indoor Temperature
+												<img src="http://i.snag.gy/Wnc4I.jpg" alt="" width="80% of window" /><br>
+												Pollutant Concentration
+												<img src="http://i.snag.gy/tpBQN.jpg" alt="" width="80% of window"/>
+											</div>
+										</article>
+										<article>
+											<div >
+												<h4> Statistical Analysis</h4>
+												<p>	We’ve begun researching statistical methods that are better suited to comparing time course models. Analysis of variance (ANOVA), for example, is used by biologists to compared observed variance in a particular variable. It’s thought of as a generalized t-test for multiple groups (variables like mean) and usually results in less false positives than using multiple two-sample t-tests. We plan on implementing ANOVA to compare different types of days (see above) and look for significant increases in stove use and pollutant creation. </p>
 											</div>
 										</article>
 									</div>
@@ -92,31 +124,9 @@
 							<!--- Three-->
 							<section id="three">
 								<div class="container">
-									<h3>Story 2</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-									<div class="features">
-										<article>
-											<a href="#" class="image"><img src="images/pic01.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Possibly broke spacetime</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic02.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Terraformed a small moon</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="images/pic03.jpg" alt="" /></a>
-											<div class="inner">
-												<h4>Snapped dark matter in the wild</h4>
-												<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer adipiscing ornare amet.</p>
-											</div>
-										</article>
-									</div>
+									<h3>Story 2: Project Update 4/22</h3>
+									<p>Stay tuned!</p>
+									
 								</div>
 							</section>
 
@@ -136,27 +146,13 @@
 							<section id="five">
 								<div class="container">
 									<h3>Contact Us</h3>
-									<p>Integer eu ante ornare amet commetus vestibulum blandit integer in curae ac faucibus integer non. Adipiscing cubilia elementum integer. Integer eu ante ornare amet commetus.</p>
-									<form method="post" action="#">
-										<div class="row uniform">
-											<div class="6u 12u(xsmall)"><input type="text" name="name" id="name" placeholder="Name" /></div>
-											<div class="6u 12u(xsmall)"><input type="email" name="email" id="email" placeholder="Email" /></div>
-										</div>
-										<div class="row uniform">
-											<div class="12u"><input type="text" name="subject" id="subject" placeholder="Subject" /></div>
-										</div>
-										<div class="row uniform">
-											<div class="12u"><textarea name="message" id="message" placeholder="Message" rows="6"></textarea></div>
-										</div>
-										<div class="row uniform">
-											<div class="12u">
-												<ul class="actions">
-													<li><input type="submit" class="special" value="Send Message" /></li>
-													<li><input type="reset" value="Reset Form" /></li>
-												</ul>
-											</div>
-										</div>
-									</form>
+									<p>Questions? Comments? Contact us here!</p>
+									<ul class="feature-icons">
+										<li class="fa-envelope"><a href="mailto:mackenzie.frackleton@students.olin.edu">mackenzie.frackleton@students.olin.edu</a></li>
+										<li class="fa-envelope"><a href="mailto:brenna.manning@students.olin.edu">brenna.manning@students.olin.edu</a></li>
+										<li class ="fa-github"><a href="https://github.com/BrennaManning/DataScience2016FP"> <b>View Our Code on Github!</b></a></li>
+										
+									</ul>
 								</div>
 							</section>
 
