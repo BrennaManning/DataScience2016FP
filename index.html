@@ -18,7 +18,7 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<a href = "https://github.com/BrennaManning/DataScience2016FP"><span class="image avatar"><img src="images/ghlogo.jpg" alt="" width = "279px"/></span></a>
+					<a href = "https://github.com/BrennaManning/DataScience2016FP"><span class="image avatar"><img src="images/ghlogo.jpg" alt="" width = "200px"/></span></a>
 					<h4><a href="#">Data Science 2016</a></h4>
 					<h4> Olin College of Engineering<h4>
 					<p>Mackenzie Frackleton <br />
@@ -27,10 +27,10 @@
 				<nav id="nav">
 					<ul>
 						<li><a href="#one" class="active">About</a></li>
-						<li><a href="#two">Story 1</a></li>
-						<li><a href="#three">Story 2</a></li>
-						<li><a href="#four">Goals & Reflection</a></li>
-						<li><a href="#five">Contact</a></li>
+						<li><a href="#two">Mid-Project Blog Posts</a></li>
+						<li><a href="#four"> Final Analysis and Results</a></li>
+						<li><a href="#five">System Architecture</a></li>
+						<li><a href="#six">Contact</a></li>
 					</ul>
 				</nav>
 				<footer>
@@ -50,187 +50,87 @@
 							<section id="one">
 								<div class="container">
 									<header class="major">
-										<h2>Investigating Kwadela</h2>
-										<p>Analyzing and Visualizing Thermal and Pollutant Data Over Time from the Kwadela Township in South Africa <br>
+										<h2>Investigating KwaDela</h2>
+										<p>Analyzing and Visualizing Thermal and Pollutant Data Over Time from the KwaDela Township in South Africa <br>
 										Pre/Post Intervention</p>
 
 									</header>
 									<p>Poor air quality from aerosol pollution is the second leading cause of premature death in the world, with the burden of this pollution falling primarily on the poor. When governments seek to improve air quality, the easiest target tends to be large point-sources of pollutants (i.e. power generation facilities, refineries, and other industrial facilities). However, this strategy is ineffective in areas such as South Africa, where the vast majority (up to 80%) of particulate matter can be apportioned to domestic burning of coal and wood in low-income areas for the purpose of heating and cooking. </p>
-									<p>To this end, a major chemical company in South Africa funded a multi-year pollution study in a small township called Kwadella during 2013-2014. This study consisted of one year (winter and summer) of air quality measurements to establish a baseline for pollution. After year 1, low-cost modifications were made to township homes to improve their thermal efficiency with the goal of reducing the quantity of fuel burned. Year 2 made the same air quality measurements to determine the impact of these intervention steps on both indoor and ambient air quality. </p>
-									<p>For our Data Science final project, we have been working in collaboration with Olin Professor Scott Hersey, who has provided us with a dataset from this pollution study that describes indoor temperature, outdoor temperature, particulate matter pollutant concentration, and gas phase pollutant concentration during the winter of 2013 and the winter of 2014 in Kwadela, South Africa.</p>
+									<p>To this end, a major chemical company in South Africa funded a multi-year pollution study in a small township called KwaDela during 2013-2014. This study consisted of one year (winter and summer) of air quality measurements to establish a baseline for pollution. After year 1, low-cost modifications were made to township homes to improve their thermal efficiency with the goal of reducing the quantity of fuel burned. Year 2 made the same air quality measurements to determine the impact of these intervention steps on both indoor and ambient air quality. </p>
+									<p>For our Data Science final project, we have been working in collaboration with Olin Professor Scott Hersey, who has provided us with a dataset from this pollution study that describes indoor temperature, outdoor temperature, particulate matter pollutant concentration, and gas phase pollutant concentration during the winter of 2013 and the winter of 2014 in KwaDela, South Africa.</p>
 
 									<a href="#" class="image"><img src="http://i.snag.gy/gNpe6.jpg" alt="Google Earth: Bird's eye view of Kwadella" /> </a>  <h6>Photo: Google Earth 2016</h6>
 								</div>
-
 							</section>
 
 
-						<!-- Two-->
+						<!-- Two -->
 							<section id="two">
-								<div class="container">
-									<h3>Story 1: Project Update 4/5</h3>
-									<p>Exploration and visualization of 2013 pre-intervention data.</p>
-									<div class="features">
-										<article>
-											
-											<div >
-												<h4>Getting started and learning about our dataset </h4>
-												<p>We started this project by looking at ways we could work with an external collaborator and their dataset. Luckily, Olin’s professors have a breadth of data-rich research projects going on and we were able to find and work with Professor Scott Hersey and the environmental data he collected in the low-income South African township of Kwadela. Because Scott works and teaches a class on campus, we were able to meet with our collaborator to understand the context of the data and ask questions about circumstances surrounding data collection and odd points and outliers; before this project we had to make up our own context for data sets and catch probable errors based on our limited knowledge of the dataset subject field. </p>
-												<p>During our meeting with Scott, we were able to identify tangible research questions for our project, understand how the data was expected to behave based on principles of chemistry and anthropology, and select a handful of actually useful columns of data from the 50+ column long csv file Scott had originally provided us. For example, we learned that homes in Kwadela usually have very poor insulation and rely on coal burning stoves for warmth. These same coal burning stoves throw large quantities of pollutants in the air and ultimately cause lung related health concerns for the inhabitants of Kwadela. By comparing trends in outdoor temperature, indoor temperature (which indicates stove usage), and pollutant concentrations, we should be able to see how closely stove use is connected to pollution and cold weather. 
-											</p>
-											</div>
-										</article>
-										<article>
-											<div >
-												<h4>Challenge that was solved - Best Ways to Represent Data Over Time</h4>
-												<p>In talking with Scott, we also identified a challenge within our dataset. Scott’s data is a time course data series, meaning that it consists of a number of quantitative measurements taken over time. With time course data series, as we learned through research and our conversation with Scott, it’s not statistically accurate to take one mean temperature or pollutant concentration for  the whole winter and use only that measurement. Additionally, data visualizations over the course of the entire winter are noisy and show season-wide trends, but cannot accurately represent daily trends that reflect the average life of someone living in Kwadela.  </p>
-											</div>
-										</article>
-										<article>
-											
-											<h4>Season Wide Trends </h4>
-												<p>	Season-wide trends were initially a challenge, as the dates in our dataset did not originally have a feature that represented the time since data collection began. Plotting by ‘Day’ would actually show a three data points for that day (one data point per month). We needed to create a new column to represent the DayCount, which would show us the days that had past since July 1st, approximately when data collection began that winter. Once this was resolved, however, we were able to create visualizations to show trends over the course of the entire winter. The code we used to get a running DayCount is below. The plot below is a graph of season-wide trends in indoor temperature ( green), outdoor temperature (blue), and concentrations of particulate pollutant greater than 4 microns in diameter(red). </p>
-
-										</article>
-											<div>
-												<center><a href="#" class="image"><img src="http://i.snag.gy/8e97e.jpg" alt="" /></a> <br><a href="#" class="image"><img src="http://i.snag.gy/XSYKb.jpg" alt="" width ="110% of window" /></a><br> </center>
-											</div>
-										<article>
-											<div >
-												<h4> Diurnal Plots</h4>
-												<p>	Once we had the season-wide data visualizations, We found that diurnal plots are the best way to find the significant daily trends in the data. Right now, we’re looking at seasonal plots to understand overarching trends, then examining average days in general. Next, we want to look at averages for certain types of days (for example, days in the final, warmer third of the winter) and compare these plots. 	Here are some diurnal plots we have created.  You can see that the spikes in pollutant concentration show up in the morning, when people in the household would turn on their stoves at the beginning of the day, as well as in the early evening, when people are cooking dinner and night starts getting colder.  Comparing this to the plots of indoor temperature and outdoor temperature, we see that at the time of day that pollutants spike, and presumably the stove is being turned on, indoor temperature starts decreasing at a much slower rate than outdoor temperature, and the difference between indoor and outdoor temperatures increases.
-
-												Both these visualizations and the season-wide visualizations can be used to tell a qualitative story about our dataset.
-												</p>
-											</div>
-											<div>
-												Outdoor Temmperature
-												<img src="http://i.snag.gy/jF7SI.jpg" alt="" width="80% of window"/><br>
-												Indoor Temperature
-												<img src="http://i.snag.gy/Wnc4I.jpg" alt="" width="80% of window" /><br>
-												Pollutant Concentration
-												<img src="http://i.snag.gy/tpBQN.jpg" alt="" width="80% of window"/>
-											</div>
-										</article>
-										<article>
-											<div >
-												<h4> Statistical Analysis</h4>
-												<p>	We’ve begun researching statistical methods that are better suited to comparing time course models. Analysis of variance (ANOVA), for example, is used by biologists to compared observed variance in a particular variable. It’s thought of as a generalized t-test for multiple groups (variables like mean) and usually results in less false positives than using multiple two-sample t-tests. We plan on implementing ANOVA to compare different types of days (see above) and look for significant increases in stove use and pollutant creation. </p>
-											</div>
-										</article>
-									</div>
-								</div>
-							</section>
-							<!--- Three-->
-							<section id="three">
-								<div class="container">
-									<h3>Story 2: Project Update 4/22</h3>
-									<h5>More Informative & More Intuitive Plots</h5>
 									
-									<p>Showing the difference between indoor temperature and outdoor temperature over the course of a day shows more clearly when the temperature is being influenced by coal burning.</p>
-									<img src="http://i.imgur.com/6w2zL9d.png">
-
-									<h5>Separating Data By Temperature - Comparing Warm & Cold Days</h5>
-									<p>We looked into several different ways to divide up our data to analyze and compare/contrast the warmer and colder days of the winter.  Above average vs below average, standard deviations, etc.  We decided that it would be be best to divide into three brackets up by IQR. This would mean that the cold group was made up of the coldest 25% of days of the year, the middle group was made up of the middle 50% of days of the year, and the warm group was made up of the warmest 25% of days of the year. To create these groups, we separated the dataset by day, found the average outdoor temperature of each day and used those to make the divisions. 
-
-									For this project, we are most interested in the data about the colder days, since that is when people would be burning more coal to heat their homes.
- 
-									When we compared 2013 to 2014 we set temperature cutoffs to be the same, so that the data would be more comparable. We chose these cutoffs to be the IQR of 2014, since it was the slightly warmer year, so that both data frames would have enough days in the temperature range below that cutoff. </p>
-
-									<img src="http://i.imgur.com/tfRRLNi.png?1">
-
-
-									<h5>2013 vs 2014: Pre-Intervention Vs Post-Intervention</h5>
-									<p>Between winter of 2013 and winter of 2014, low-cost modifications were made to township homes in Kwadela to improve thermal efficiency with the goal  of reducing the quantity of fuel burned. These modifications included things like painting walls darker and replacing roofs of homes so that they would be better insulated.  Comparing data from winter of 2013 to winter of 2014 can show us the impact of this intervention. </p> 
-
-
-									To see if the years are similar enough to compare pollution data, we compare the outdoor temperature information from 2013 and 2014.
-									<br> 
-
-									<img src="http://i.imgur.com/rwh0DqX.png">
-									<br>
-									<img src="http://i.imgur.com/ug4RPU1.png">
-									
-
-									<p>As a whole, the temperatures of each winter were close enough that we can compare the two years.  It is especially clear in the diurnal plot of the temperature of an average day. While peak temperatures in 2014 werre slightly warmer on average than 2013, they are very close and follow the same trend.</p>
-
-									<p> Outdoor PM10 Concentration Over Average Day 2013 vs 2014</p>
-									<img src="http://i.imgur.com/qTi5R9x.png">
-
-									<p> Outdoor PM2.5 Concentration Over Average Day 2013 vs 2014 </p>
-									<img src="http://i.imgur.com/JIZGtv1.png">
-
-									<p> Indoor PM4 Concentration Over Average Day 2013 vs 2014 </p>
-									<img src="http://i.imgur.com/TsRdy2S.png">
-
-									<br>
-
-									Comparing the overall diurnal plots, we see that post-intervention, the peaks of PM10 and PM2.5 concentrations decreased from before the intervention, but the peaks of indoor PM4 concentration increased.  This is troubling, as it indicates that the interventions to make homes more thermally efficient may have also increased the concentration of PM4 inside of the homes of the people those interventions were intended to help.
-
-									<br>
-									<p>Our next step was to break the 2013 and 2014 dataframes up into temperature brackets by the cutoffs determined above. we care most about the coldest days of the year, since that is when people tend to burn the most coal.</p>
-
-									<p>The plot below shows the difference between indoor and outdoor temperatures for each temperature bracket of each year.</p>
-									<img src="http://i.imgur.com/fCjeeaP.png">
-
-
-
-									<!--<img src="http://i.imgur.com/c9xjzu8.png">-->
-									<h5>Exploring just the cold days:</h5>
-									<img src="http://i.imgur.com/uYDwWhr.png">									
-									<img src="http://i.imgur.com/3FZaplm.png">
-									<img src="http://i.imgur.com/XeBczxW.png">
-
-									<h5>Medium temperature and warm days:</h5>
-									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/aMl8Kex.png">									
-									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/o5TS2ZB.png">
-									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/yjqbdql.png">
-									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/kLJkRL5.png">									
-									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/GfZyKAJ.png">
-									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/HLO3Ruo.png">
-
-
-
-
-
-									<h4>Statistics Decisions </h4>
-									<p>We originally chose a one way ANOVA to look for similarity between population means (e.g. is average PM4 pollution on cold days significantly different from average PM4 on warm days).  We planned to use the scipy module, stats.f_oneway, to compare quantities between years and quartiles, testing the null hypothesis that the means of each population would be the same. Theoretically, a low p value would have told us that the population means were definitely not the same. When we started implementing f_oneway, however, we started getting NaN p values. Some additional research showed  that one-way ANOVAs are parametric, and assume that the each sample is from a normally distributed population and that the population standard deviations of the tested groups are all equal. Our data is definitely not normally distributed, nor does it have consistent standard deviations in any of the tested data. So we looked for  a nonparametric alternative.</p>
-									<p>
-									We found the Kruskal-Wallis H-test, or one-way ANOVA on ranks, considered to be a non-parametric version of the one way ANOVA. The test is available as the scipy module stats.kruskal, so it was perfectly accessible for our project. It’s known as a one-way ANOVA on ranks because it assigns data ranks (lowest to highest) based on value instead of the parameters required by f_oneway.
- 									At a high level, kruskal takes the given data and compiles it into one group (size n), and then rank-orders all the data from lowest (rank 1) to highest (rank n). The ranks are then returned to the original groupings and kruskal takes the mean of the ranks in the group and compares the means. The null hypothesis states that the means of the ranks of all the groups will not be substantially different, so if these groups are similar, kruskal returns a high p value. If the groups all significantly differ, we receive a low p value.  So far we’ve had a decent amount of success in applying kruskal to our data. 
- 									</p>
- 									<p>
-									We’re also looking for a way to compare trends in measurements with different units (temperature to PM4 concentration, for example). We initially looked to Spearman’s correlation, but realized it didn’t take into account time as a dimension of the data. We’re currently looking at using serial correlation, as discussed in Allen Downey’s Thinkstats2, to take into account time as a factor of correlation as well as other variables.
-									</p> 
-
-
-									<h4>Initial Statistical Analysis Results </h4>
-									<img src="http://i.imgur.com/Jy5a1QL.png?1">
-									<p>These results show that while the initial temperature data from the 2013 and 2014 dataframes are statistically different, the outdoor temperature data comparing 2013 cold days and 2014 cold days are very strongly correlated. Diurnal temperature wise they are basically the same. </p>
-
-
-
-
-
-
-									
-								</div>
-							</section>
-
-
-						<!-- Four-->
-							<section id="four">
 								<div class="container">
-									<h3>Goals & Reflection</h3>
+									<h3>Mid-Project Blog Posts</h3>
 									<ul class="feature-icons">
 										
-										<li class="fa-user">Our Learning Goals</li>
-										<li class="fa-heart">Final Reflection</li>
+										<a href="story1.html"><li class="fa-pencil-square-o">Story 1: Project Update 4/5</li></a>
+										<a href="story2.html"><li class="fa-pencil-square-o">Story 2: Project Update 4/22</li></a>
 									</ul>
 								</div>
+								
 							</section>
-						<!-- Five -->
+						
+
+							</section>
+							<!--- Three-->
+							
+						<!--Four-->
+							<section id="four">
+								<div class="container">
+									<h2>Final Analysis and Results</h2>
+
+									<h5> <a href="https://github.com/BrennaManning/DataScience2016FP/blob/master/KwaDela_May2016Analysis.ipynb">A Jupyter Notebook containing analylsis and results along with commentary can be found here. </a></h5>
+									
+									<h4><a href="https://github.com/BrennaManning/DataScience2016FP/blob/master/KwaDela_Poster.pdf">Poster can be viewed here</a></h4>
+
+									<p>In our data, we observed that every day has evident patterns. The later afternoon is the warmest portion of the day outdoors, and as the evening turns to night the interior of the house is warmed by the coal stove used to make a cooking fire. Pollutants spike in the morning and evening, indicating use of the stove for a combination of warmth and cooking. We know morning stove use is usually exclusively for heating the home after a cold night (people often wake just after midnight to stoke the fire) and for heathing water. In the evenings, residents of KwaDela use their stoves to cook dinner and keep the family warm for the night. The stove is used most heavily for dinnertime.</p>
+									<p>
+									
+										
+									</p>
+								</div>
+							</section>
+						<!--Five-->
 							<section id="five">
+								<div class="container">
+									<h3>System Architecture</h3>
+									<ul class="feature-icons">
+										
+										<p> Initial plots showing each datapoint over time were noisy and unclear.This is because many of the trends we were examining are periodic with a period of 24 hours (or 1 day). By taking the average temperature/concentration of each day of the winter and plotting that, we were able to see the trends over the course of the winter and get rid of daily periodic fluctuations.  However, we found that those daily periodic fluctuations were more important to what we were trying to understand than season-wide trends.</p>
+
+										<p>Because the data we were analyzing tended to be periodic, being influenced by daily patterns of both temperature and human behavior, we found we were able to get the best results by observing and analyzing diurnal profiles of data.
+										The pollution is coming from coal burning within homes, which is influenced by daily routines. This means we see more meaningful trends when we examine this data on a daily basis (what an average day looks like). Diurnal profiles examine the periodic trends we smoothed out in our previous graphs, and recover more meaningful data that was lost in smoothing. </p>
+
+										<p> We were primarily interested in investigating the coldest days of the  year, so we needed to separate the days into different temperature brackets. This was especially useful in comparing 2013 and 2014 data to analyze the impact of the intervention. Comparing an "average day" minimalizes the importance of cold days where large amounts of coal were burned, so it's not as significant. We set cutoff temperatures for these brackets so 2013 and 2014 could be broken down into like chunks.
+										To find these cutoff temperatures, we found the IQR brackets of outdoor temperature for each year, and use the quartile cutoff temperatures of the warmer year, so that both have at least 25% of their days counted as cold days.
+										2014 is the warmer year, so cold days are defined as days in either 2013 or 2014 where the average temperature of that day is colder than 25% of days in 2014.</p>
+
+
+										<p> We used a Kruskal test to determine that in comparing the diurnal profile of outdoor temperature for cold days in 2013 and the diurnal profile of outdoor temperature for cold days in 2014, they were not at all significantly different. In fact, we can accept the null hypothesis with 95% certainty. If we saw other features from diurnal profiles that were statistically significantly different, we would know these differences probably weren't a result of outdoor temperature fluctuation.  </p>
+
+										<p>A Kruskal Wallis-H test is one way analysis of variance on ranks. We used this test to compare 2013 and 2014 to see how significantly the data between years differed (this test is found in scipy.stats' kruskal method: http://docs.scipy.org/doc/scipy-0.17.0/reference/generated/scipy.stats.kruskal.html). We examined how the outdoor temperatures varied (as a soft control), and then compared the years's pollutant concentrations to get a read for how well the intervention reduced pollution. We did this again with diurnal plots to be sure.
+										Kruskal is best for comparing two or more series' with one category of measurement at different time points to see if there is significant variance between those groups. It's parametric, and uses ranked means to measure how greatly the series' differ.This test can also be applied to 2013 vs 2014 particulate matter pollutant data to find statistical significance in the differences in pollution before and after intervention.
+										The null hypothesis of the Kruskal test states that the mean ranks of the compared two or more series' are the same. We have used a cutoff p-value of 0.05, so any test that returned a value lower than 0.05 showed that the series' were significantly different.</p>
+
+										<p>We did more Kruskal tests comparing particulate matter pollution data between 2013 and 2014 and found that some were statistically significantly different, and other test results suggested they were different, though we did not have enough evidence to reject the null hypothesis with 95% confidence.</p>
+
+										<p>We used Spearman's rank correlation to track how well each series' trends correlated with one another. We chose to use a spearman correlation because it doesn't rely on the parameters a perason's correlation does. The pandas method dataframe.corr allowed us to choose spearman, ignores nans (a must have) and constructed a useful dataframe of correlation coefficients that were useful for making matrix visualizations of the correlations.  With these Spearman rank correlations, we had quantitatvie values to represent the correlations between the particulate matter pollutants, temperature trends, and gas-phase pollutants.</p>
+
+										<p> The Kruskal tests and Spearman correlations were the most useful statistical methods for our project. </p>
+								</div>
+							</section>
+
+
+						<!-- Six-->
+							<section id="six">
 								<div class="container">
 									<h3>Contact Us</h3>
 									<p>Questions? Comments? Contact us here!</p>
@@ -242,353 +142,6 @@
 									</ul>
 								</div>
 							</section>
-
-						<!-- Five -->
-						<!--
-							<section id="five">
-								<div class="container">
-									<h3>Elements</h3>
-
-									<section>
-										<h4>Text</h4>
-										<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
-										This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-										This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
-										<hr />
-										<header>
-											<h4>Heading with a Subtitle</h4>
-											<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-										</header>
-										<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-										<header>
-											<h5>Heading with a Subtitle</h5>
-											<p>Lorem ipsum dolor sit amet nullam id egestas urna aliquam</p>
-										</header>
-										<p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem accumsan varius montes viverra nibh in adipiscing blandit tempus accumsan.</p>
-										<hr />
-										<h2>Heading Level 2</h2>
-										<h3>Heading Level 3</h3>
-										<h4>Heading Level 4</h4>
-										<h5>Heading Level 5</h5>
-										<h6>Heading Level 6</h6>
-										<hr />
-										<h5>Blockquote</h5>
-										<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
-										<h5>Preformatted</h5>
-										<pre><code>i = 0;
-
-	while (!deck.isInOrder()) {
-	    print 'Iteration ' + i;
-	    deck.shuffle();
-	    i++;
-	}
-
-	print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
-									</section>
-
-									<section>
-										<h4>Lists</h4>
-										<div class="row">
-											<div class="6u 12u(xsmall)">
-												<h5>Unordered</h5>
-												<ul>
-													<li>Dolor pulvinar etiam magna etiam.</li>
-													<li>Sagittis adipiscing lorem eleifend.</li>
-													<li>Felis enim feugiat dolore viverra.</li>
-												</ul>
-												<h5>Alternate</h5>
-												<ul class="alt">
-													<li>Dolor pulvinar etiam magna etiam.</li>
-													<li>Sagittis adipiscing lorem eleifend.</li>
-													<li>Felis enim feugiat dolore viverra.</li>
-												</ul>
-											</div>
-											<div class="6u 12u(xsmall)">
-												<h5>Ordered</h5>
-												<ol>
-													<li>Dolor pulvinar etiam magna etiam.</li>
-													<li>Etiam vel felis at lorem sed viverra.</li>
-													<li>Felis enim feugiat dolore viverra.</li>
-													<li>Dolor pulvinar etiam magna etiam.</li>
-													<li>Etiam vel felis at lorem sed viverra.</li>
-													<li>Felis enim feugiat dolore viverra.</li>
-												</ol>
-												<h5>Icons</h5>
-												<ul class="icons">
-													<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-													<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-													<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-													<li><a href="#" class="icon fa-github"><span class="label">Github</span></a></li>
-													<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-													<li><a href="#" class="icon fa-tumblr"><span class="label">Tumblr</span></a></li>
-												</ul>
-											</div>
-										</div>
-										<h5>Actions</h5>
-										<ul class="actions">
-											<li><a href="#" class="button special">Default</a></li>
-											<li><a href="#" class="button">Default</a></li>
-											<li><a href="#" class="button alt">Default</a></li>
-										</ul>
-										<ul class="actions small">
-											<li><a href="#" class="button special small">Small</a></li>
-											<li><a href="#" class="button small">Small</a></li>
-											<li><a href="#" class="button alt small">Small</a></li>
-										</ul>
-										<div class="row">
-											<div class="3u 6u(medium) 12u$(xsmall)">
-												<ul class="actions vertical">
-													<li><a href="#" class="button special">Default</a></li>
-													<li><a href="#" class="button">Default</a></li>
-													<li><a href="#" class="button alt">Default</a></li>
-												</ul>
-											</div>
-											<div class="3u 6u$(medium) 12u$(xsmall)">
-												<ul class="actions vertical small">
-													<li><a href="#" class="button special small">Small</a></li>
-													<li><a href="#" class="button small">Small</a></li>
-													<li><a href="#" class="button alt small">Small</a></li>
-												</ul>
-											</div>
-											<div class="3u 6u(medium) 12u$(xsmall)">
-												<ul class="actions vertical">
-													<li><a href="#" class="button special fit">Default</a></li>
-													<li><a href="#" class="button fit">Default</a></li>
-													<li><a href="#" class="button alt fit">Default</a></li>
-												</ul>
-											</div>
-											<div class="3u 6u$(medium) 12u$(xsmall)">
-												<ul class="actions vertical small">
-													<li><a href="#" class="button special small fit">Small</a></li>
-													<li><a href="#" class="button small fit">Small</a></li>
-													<li><a href="#" class="button alt small fit">Small</a></li>
-												</ul>
-											</div>
-										</div>
-									</section>
-
-									<section>
-										<h4>Table</h4>
-										<h5>Default</h5>
-										<div class="table-wrapper">
-											<table>
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Description</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Four</td>
-														<td>Vitae integer tempus condimentum.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Five</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="2"></td>
-														<td>100.00</td>
-													</tr>
-												</tfoot>
-											</table>
-										</div>
-
-										<h5>Alternate</h5>
-										<div class="table-wrapper">
-											<table class="alt">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Description</th>
-														<th>Price</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>Item One</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Two</td>
-														<td>Vis ac commodo adipiscing arcu aliquet.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Three</td>
-														<td> Morbi faucibus arcu accumsan lorem.</td>
-														<td>29.99</td>
-													</tr>
-													<tr>
-														<td>Item Four</td>
-														<td>Vitae integer tempus condimentum.</td>
-														<td>19.99</td>
-													</tr>
-													<tr>
-														<td>Item Five</td>
-														<td>Ante turpis integer aliquet porttitor.</td>
-														<td>29.99</td>
-													</tr>
-												</tbody>
-												<tfoot>
-													<tr>
-														<td colspan="2"></td>
-														<td>100.00</td>
-													</tr>
-												</tfoot>
-											</table>
-										</div>
-									</section>
-
-									<section>
-										<h4>Buttons</h4>
-										<ul class="actions">
-											<li><a href="#" class="button special">Special</a></li>
-											<li><a href="#" class="button">Default</a></li>
-											<li><a href="#" class="button alt">Alternate</a></li>
-										</ul>
-										<ul class="actions">
-											<li><a href="#" class="button special big">Big</a></li>
-											<li><a href="#" class="button">Default</a></li>
-											<li><a href="#" class="button alt small">Small</a></li>
-										</ul>
-										<ul class="actions fit">
-											<li><a href="#" class="button special fit">Fit</a></li>
-											<li><a href="#" class="button fit">Fit</a></li>
-											<li><a href="#" class="button alt fit">Fit</a></li>
-										</ul>
-										<ul class="actions fit small">
-											<li><a href="#" class="button special fit small">Fit + Small</a></li>
-											<li><a href="#" class="button fit small">Fit + Small</a></li>
-											<li><a href="#" class="button alt fit small">Fit + Small</a></li>
-										</ul>
-										<ul class="actions">
-											<li><a href="#" class="button special icon fa-download">Icon</a></li>
-											<li><a href="#" class="button icon fa-download">Icon</a></li>
-											<li><a href="#" class="button alt icon fa-check">Icon</a></li>
-										</ul>
-										<ul class="actions">
-											<li><span class="button special disabled">Special</span></li>
-											<li><span class="button disabled">Default</span></li>
-											<li><span class="button alt disabled">Alternate</span></li>
-										</ul>
-									</section>
-
-									<section>
-										<h4>Form</h4>
-										<form method="post" action="#">
-											<div class="row uniform">
-												<div class="6u 12u(xsmall)">
-													<input type="text" name="demo-name" id="demo-name" value="" placeholder="Name" />
-												</div>
-												<div class="6u 12u(xsmall)">
-													<input type="email" name="demo-email" id="demo-email" value="" placeholder="Email" />
-												</div>
-											</div>
-											<div class="row uniform">
-												<div class="12u">
-													<div class="select-wrapper">
-														<select name="demo-category" id="demo-category">
-															<option value="">- Category -</option>
-															<option value="1">Manufacturing</option>
-															<option value="1">Shipping</option>
-															<option value="1">Administration</option>
-															<option value="1">Human Resources</option>
-														</select>
-													</div>
-												</div>
-											</div>
-											<div class="row uniform">
-												<div class="4u 12u(medium)">
-													<input type="radio" id="demo-priority-low" name="demo-priority" checked>
-													<label for="demo-priority-low">Low Priority</label>
-												</div>
-												<div class="4u 12u(medium)">
-													<input type="radio" id="demo-priority-normal" name="demo-priority">
-													<label for="demo-priority-normal">Normal Priority</label>
-												</div>
-												<div class="4u 12u(medium)">
-													<input type="radio" id="demo-priority-high" name="demo-priority">
-													<label for="demo-priority-high">High Priority</label>
-												</div>
-											</div>
-											<div class="row uniform">
-												<div class="6u 12u(medium)">
-													<input type="checkbox" id="demo-copy" name="demo-copy">
-													<label for="demo-copy">Email me a copy of this message</label>
-												</div>
-												<div class="6u 12u(medium)">
-													<input type="checkbox" id="demo-human" name="demo-human" checked>
-													<label for="demo-human">I am a human and not a robot</label>
-												</div>
-											</div>
-											<div class="row uniform">
-												<div class="12u">
-													<textarea name="demo-message" id="demo-message" placeholder="Enter your message" rows="6"></textarea>
-												</div>
-											</div>
-											<div class="row uniform">
-												<div class="12u">
-													<ul class="actions">
-														<li><input type="submit" value="Send Message" /></li>
-														<li><input type="reset" value="Reset" class="alt" /></li>
-													</ul>
-												</div>
-											</div>
-										</form>
-									</section>
-
-									<section>
-										<h4>Image</h4>
-										<h5>Fit</h5>
-										<span class="image fit"><img src="images/banner.jpg" alt="" /></span>
-										<div class="box alt">
-											<div class="row 50% uniform">
-												<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-												<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-												<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-											</div>
-											<div class="row 50% uniform">
-												<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-												<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-												<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-											</div>
-											<div class="row 50% uniform">
-												<div class="4u"><span class="image fit"><img src="images/pic03.jpg" alt="" /></span></div>
-												<div class="4u"><span class="image fit"><img src="images/pic01.jpg" alt="" /></span></div>
-												<div class="4u"><span class="image fit"><img src="images/pic02.jpg" alt="" /></span></div>
-											</div>
-										</div>
-										<h5>Left &amp; Right</h5>
-										<p><span class="image left"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-										<p><span class="image right"><img src="images/avatar.jpg" alt="" /></span>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.</p>
-									</section>
-
-								</div>
-							</section>
-						-->
 
 					</div>
 

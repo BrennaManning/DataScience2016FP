@@ -1,0 +1,182 @@
+<html>
+	<head>
+		<title>Data Science 2016 Final Project</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<a href = "https://github.com/BrennaManning/DataScience2016FP"><span class="image avatar"><img src="images/ghlogo.jpg" alt="" width = "200x"/></span></a>
+					<h4><a href="#">Data Science 2016</a></h4>
+					<h4> Olin College of Engineering<h4>
+					<p>Mackenzie Frackleton <br />
+					Brenna Manning</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html#one" class="active">About</a></li>
+						<li><a href="index.html#two">Mid-Project Blog Posts</a></li>
+						<li><a href="index.html#four"> Final Analysis and Results</a></li>
+						<li><a href="index.html#five">System Architecture</a></li>
+						<li><a href="index.html#six">Contact</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One -->
+							<section id="one">
+								<div class="container">
+									<header class="major">
+										<h2>Investigating KwaDela</h2>
+										<p>Analyzing and Visualizing Thermal and Pollutant Data Over Time from the KwaDela Township in South Africa <br>
+										Pre/Post Intervention</p>
+								</div>
+							</section>
+
+							<!-- Two-->
+							<section id="three">
+								<div class="container">
+									<h3>Story 2: Project Update 4/22</h3>
+									<h5>More Informative & More Intuitive Plots</h5>
+									
+									<p>Showing the difference between indoor temperature and outdoor temperature over the course of a day shows more clearly when the temperature is being influenced by coal burning.</p>
+									<img src="http://i.imgur.com/6w2zL9d.png">
+
+									<h5>Separating Data By Temperature - Comparing Warm & Cold Days</h5>
+									<p>We looked into several different ways to divide up our data to analyze and compare/contrast the warmer and colder days of the winter.  Above average vs below average, standard deviations, etc.  We decided that it would be be best to divide into three brackets up by IQR. This would mean that the cold group was made up of the coldest 25% of days of the year, the middle group was made up of the middle 50% of days of the year, and the warm group was made up of the warmest 25% of days of the year. To create these groups, we separated the dataset by day, found the average outdoor temperature of each day and used those to make the divisions. 
+
+									For this project, we are most interested in the data about the colder days, since that is when people would be burning more coal to heat their homes.
+ 
+									When we compared 2013 to 2014 we set temperature cutoffs to be the same, so that the data would be more comparable. We chose these cutoffs to be the IQR of 2014, since it was the slightly warmer year, so that both data frames would have enough days in the temperature range below that cutoff. </p>
+
+									<img src="http://i.imgur.com/tfRRLNi.png?1">
+
+
+									<h5>2013 vs 2014: Pre-Intervention Vs Post-Intervention</h5>
+									<p>Between winter of 2013 and winter of 2014, low-cost modifications were made to township homes in Kwadela to improve thermal efficiency with the goal  of reducing the quantity of fuel burned. These modifications included things like painting walls darker and replacing roofs of homes so that they would be better insulated.  Comparing data from winter of 2013 to winter of 2014 can show us the impact of this intervention. </p> 
+
+
+									To see if the years are similar enough to compare pollution data, we compare the outdoor temperature information from 2013 and 2014.
+									<br> 
+
+									<img src="http://i.imgur.com/rwh0DqX.png">
+									<br>
+									<img src="http://i.imgur.com/ug4RPU1.png">
+									
+
+									<p>As a whole, the temperatures of each winter were close enough that we can compare the two years.  It is especially clear in the diurnal plot of the temperature of an average day. While peak temperatures in 2014 werre slightly warmer on average than 2013, they are very close and follow the same trend.</p>
+
+									<p> Outdoor PM10 Concentration Over Average Day 2013 vs 2014</p>
+									<img src="http://i.imgur.com/qTi5R9x.png">
+
+									<p> Outdoor PM2.5 Concentration Over Average Day 2013 vs 2014 </p>
+									<img src="http://i.imgur.com/JIZGtv1.png">
+
+									<p> Indoor PM4 Concentration Over Average Day 2013 vs 2014 </p>
+									<img src="http://i.imgur.com/TsRdy2S.png">
+
+									<br>
+
+									Comparing the overall diurnal plots, we see that post-intervention, the peaks of PM10 and PM2.5 concentrations decreased from before the intervention, but the peaks of indoor PM4 concentration increased.  This is troubling, as it indicates that the interventions to make homes more thermally efficient may have also increased the concentration of PM4 inside of the homes of the people those interventions were intended to help.
+
+									<br>
+									<p>Our next step was to break the 2013 and 2014 dataframes up into temperature brackets by the cutoffs determined above. we care most about the coldest days of the year, since that is when people tend to burn the most coal.</p>
+
+									<p>The plot below shows the difference between indoor and outdoor temperatures for each temperature bracket of each year.</p>
+									<img src="http://i.imgur.com/fCjeeaP.png">
+
+
+
+									<!--<img src="http://i.imgur.com/c9xjzu8.png">-->
+									<h5>Exploring just the cold days:</h5>
+									<img src="http://i.imgur.com/uYDwWhr.png">									
+									<img src="http://i.imgur.com/3FZaplm.png">
+									<img src="http://i.imgur.com/XeBczxW.png">
+
+									<h5>Medium temperature and warm days:</h5>
+									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/aMl8Kex.png">									
+									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/o5TS2ZB.png">
+									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/yjqbdql.png">
+									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/kLJkRL5.png">									
+									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/GfZyKAJ.png">
+									<img style="display:inline-block; width:200px;" src="http://i.imgur.com/HLO3Ruo.png">
+
+
+
+
+
+									<h4>Statistics Decisions </h4>
+									<p>We originally chose a one way ANOVA to look for similarity between population means (e.g. is average PM4 pollution on cold days significantly different from average PM4 on warm days).  We planned to use the scipy module, stats.f_oneway, to compare quantities between years and quartiles, testing the null hypothesis that the means of each population would be the same. Theoretically, a low p value would have told us that the population means were definitely not the same. When we started implementing f_oneway, however, we started getting NaN p values. Some additional research showed  that one-way ANOVAs are parametric, and assume that the each sample is from a normally distributed population and that the population standard deviations of the tested groups are all equal. Our data is definitely not normally distributed, nor does it have consistent standard deviations in any of the tested data. So we looked for  a nonparametric alternative.</p>
+									<p>
+									We found the Kruskal-Wallis H-test, or one-way ANOVA on ranks, considered to be a non-parametric version of the one way ANOVA. The test is available as the scipy module stats.kruskal, so it was perfectly accessible for our project. It’s known as a one-way ANOVA on ranks because it assigns data ranks (lowest to highest) based on value instead of the parameters required by f_oneway.
+ 									At a high level, kruskal takes the given data and compiles it into one group (size n), and then rank-orders all the data from lowest (rank 1) to highest (rank n). The ranks are then returned to the original groupings and kruskal takes the mean of the ranks in the group and compares the means. The null hypothesis states that the means of the ranks of all the groups will not be substantially different, so if these groups are similar, kruskal returns a high p value. If the groups all significantly differ, we receive a low p value.  So far we’ve had a decent amount of success in applying kruskal to our data. 
+ 									</p>
+ 									<p>
+									We’re also looking for a way to compare trends in measurements with different units (temperature to PM4 concentration, for example). We initially looked to Spearman’s correlation, but realized it didn’t take into account time as a dimension of the data. We’re currently looking at using serial correlation, as discussed in Allen Downey’s Thinkstats2, to take into account time as a factor of correlation as well as other variables.
+									</p> 
+
+
+									<h4>Initial Statistical Analysis Results </h4>
+									<img src="http://i.imgur.com/Jy5a1QL.png?1">
+									<p>These results show that while the initial temperature data from the 2013 and 2014 dataframes are statistically different, the outdoor temperature data comparing 2013 cold days and 2014 cold days are very strongly correlated. Diurnal temperature wise they are basically the same. </p>
+								</div>
+							</section>
+						
+						
+								<!-- Six-->
+							<section id="six">
+								<div class="container">
+									<h3>Contact Us</h3>
+									<p>Questions? Comments? Contact us here!</p>
+									<ul class="feature-icons">
+										<li class="fa-envelope"><a href="mailto:mackenzie.frackleton@students.olin.edu">mackenzie.frackleton@students.olin.edu</a></li>
+										<li class="fa-envelope"><a href="mailto:brenna.manning@students.olin.edu">brenna.manning@students.olin.edu</a></li>
+										<li class ="fa-github"><a href="https://github.com/BrennaManning/DataScience2016FP"> <b>View Our Code on Github!</b></a></li>
+										
+									</ul>
+								</div>
+							</section>
+
+						
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollzer.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
