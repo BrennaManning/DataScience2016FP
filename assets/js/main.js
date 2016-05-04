@@ -85,7 +85,7 @@
 				$(
 					'<div id="titleBar">' +
 						'<a href="#header" class="toggle"></a>' +
-						'<span class="title">' + $('#logo').html() + '</span>' +
+						'<span class="title">' + 'Olin College Data Science 2016' + '</span>' +
 					'</div>'
 				)
 					.appendTo($body);
